@@ -17,14 +17,6 @@ if [ -f requirements.txt ] ; then
 fi
 
 # streamlit config
-if [ ! -d .streamlit ] ; then
-  mkdir .streamlit
-fi
-
-if [ ! -f .streamlit/config.toml ] ; then
-  streamlit config show > .streamlit/config.toml
-fi
-
 currentpath=$(pwd)
 username=$(whoami)
 servicename="streamlit"
