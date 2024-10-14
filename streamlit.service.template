@@ -3,9 +3,9 @@ Description=Streamlit Application
 After=network.target
 
 [Service]
-User=laca  # The user that runs the Streamlit app
-Group=laca
-WorkingDirectory=%currentpath%  # The directory where your Streamlit app is located
+User=$username
+Group=$groupname
+WorkingDirectory=%currentpath%
 ExecStart=%currentpath%/bin/python3 -m streamlit run Main.py --server.port 8501 --server.headless true
 Restart=always
 RestartSec=3
