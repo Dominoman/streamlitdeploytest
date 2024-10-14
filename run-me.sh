@@ -12,7 +12,7 @@ fi
 source bin/activate
 
 # Config.py létrehozása, ha nincs
-if [ -f config.py ] ; then
+if [ ! -f config.py ] ; then
   cp config.py.template config.py
 fi
 
