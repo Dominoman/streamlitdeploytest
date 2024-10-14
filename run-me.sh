@@ -26,14 +26,18 @@ if [ ! -f .streamlit/config.toml ] ; then
 fi
 
 currentpath=$(pwd)
-servicename="streamlit.service"
+servicename="streamlit"
 if [ ! -f $servicename ] ; then
-  cp $servicename.template $servicename
+  cp $servicename.service.template $servicename.service
 fi
 
-sed -i "s|%currentpath%|$currentpath|g" $servicename
+sed -i "s|%currentpath%|$currentpath|g" $servicename.service
 
-if [ ! -f /etc/systemd/system/$servicename ] ; then
-  print "xxx"
-  # sudo ln -s "$currentpath/$servicename" /etc/systemd/system/$servicename
+if [ ! -f /etc/systemd/system/$servicename.service ] ; then
+  sudo ln -s "$currentpath/$servicename.service" /etc/systemd/system/$servicename.service
 fi
+
+# Restart Service
+sudo systemctl daemon-reload
+sudo systemctl enable $servicename
+sudo systemctl restart $servicename
