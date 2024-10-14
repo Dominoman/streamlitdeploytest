@@ -1,0 +1,13 @@
+[Unit]
+Description=Github-webhook flask app
+After=network.target
+
+[Service]
+User=laca
+Group=laca
+WorkingDirectory=%currentpath%
+ExecStart=%currentpath%/bin/gunicorn --workers 2 --bind 0.0.0.0:8000 --timeout 240 main:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
