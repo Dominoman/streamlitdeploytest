@@ -11,6 +11,11 @@ fi
 # Aktiváljuk a virtuális környezetet
 source bin/activate
 
+# Config.py létrehozása, ha nincs
+if [ -f config.py ] ; then
+  cp config.py.template config.py
+fi
+
 # Csomagok installálása
 if [ -f requirements.txt ] ; then
   pip install -r requirements.txt

@@ -1,0 +1,2 @@
+DB_FILENAME = "sqlite:///database.db"
+DB_DEBUG = False
