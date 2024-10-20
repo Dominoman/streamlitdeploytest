@@ -29,9 +29,8 @@ groupname=$(id -gn)
 
 if [ ! -f $servicename ] ; then
   cp $servicename.service.template $servicename.service
+  sed -i "s|%currentpath%|$currentpath|g; s|%username%|$username|g; s|%groupname%|$groupname|g" $servicename.service
 fi
-
-sed -i "s|%currentpath%|$currentpath|g; s|%username%|$username|g; s|%groupname%|$groupname|g" $servicename.service
 
 if [ ! -f /etc/systemd/system/$servicename.service ] ; then
   sudo ln -s "$currentpath/$servicename.service" /etc/systemd/system/$servicename.service
